@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jebel Jais Ras Al Khaimah</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/visitjebeljais.com logo22 (3).png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <img src="{{ url_for('static', filename='images/logo.webp') }}" alt="Jebel Jais" class="nav-logo">
+            <div class="nav-links">
+                <a href="#">HOME</a>
+                <a href="#">ABOUT US</a>
+                <a href="#">PLAY</a>
+                <a href="#">STAY</a>
+                <a href="#">CONTACT</a>
+            </div>
+            <button class="book-now-btn nav-btn">BOOK NOW</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">PLAY AT THE PEAK</h1>
+            <p class="hero-text">From high-speed thrills to quiet trails, heed the call of the mountains to come outside and play at Jebel Jais, the UAE's ultimate playground. Whether you're here to conquer your fears or just catch your breath in the cool mountain air, there is something for everyone with one common denominator—jaw dropping views as far as the eye can see.</p>
+            <button class="book-now-btn hero-btn">BOOK NOW</button>
+        </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <section class="activities">
+        <h2 class="section-title">Activities at Jebel Jais</h2>
+        <div class="offers-grid">
+            <div class="offer-card active" data-offer="jais-flight">
+                <div class="discount-badge">-70%</div>
+                <h3>JAIS FLIGHT</h3>
+                <p>World's longest zipline - 2.83km at 1,680m height</p>
+                <button class="book-now-btn card-btn">BOOK NOW</button>
+            </div>
+            <div class="offer-card" data-offer="jais-sky-tour">
+                <div class="discount-badge">-70%</div>
+                <h3>JAIS SKY TOUR</h3>
+                <p>5km zipline tour across Hajar mountains</p>
+                <button class="book-now-btn card-btn">BOOK NOW</button>
+            </div>
+            <div class="offer-card" data-offer="bear-grylls">
+                <div class="discount-badge">-70%</div>
+                <h3>Bear Grylls Explorers Camp</h3>
+                <p>Survival skills training in heart of nature</p>
+                <button class="book-now-btn card-btn">BOOK NOW</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="offer-details">
+        <div class="offer-content active" id="jais-flight">
+            <div class="offer-main">
+                <div class="video-container">
+                    <video controls poster="{{ url_for('static', filename='images/jais-flight-poster.jpg') }}">
+                        <source src="{{ url_for('static', filename='videos/jais-flight.mp4') }}" type="video/mp4">
+                    </video>
+                </div>
+                <div class="offer-info">
+                    <h2>JAIS FLIGHT</h2>
+                    <p>We don't just believe, we know you can fly! Jais Flight takes pride in being the world's longest zipline, stretching 2.83 kilometres at a height of 1,680 metres above sea level across Jebel Jais' dramatic canyons where zipliners reach speeds of up to 160 km/h. Jais Flight embodies the perfect trifecta of your need for speed, height, and distance. Having taken over 120,000 thrill-seekers into "flight" from around the world since its launch in 2018, this high-profile attraction does not disappoint.</p>
+                    <div class="price-container">
+                        <span class="old-price">499.00 AED</span>
+                        <span class="new-price">399.00 AED</span>
+                    </div>
+                    <button class="book-now-btn offer-btn">BOOK NOW</button>
+                </div>
+            </div>
+            <h3 class="gallery-title">Gallery</h3>
+            <div class="gallery">
+                <img src="{{ url_for('static', filename='images/jais-flight-1.jpg') }}" alt="Jais Flight 1">
+                <img src="{{ url_for('static', filename='images/jais-flight-2.jpg') }}" alt="Jais Flight 2">
+                <img src="{{ url_for('static', filename='images/jais-flight-3.jpg') }}" alt="Jais Flight 3">
+            </div>
+        </div>
+
+        <div class="offer-content" id="jais-sky-tour">
+            <div class="offer-main">
+                <div class="video-container">
+                    <video controls poster="{{ url_for('static', filename='images/sky-tour-poster.jpg') }}">
+                        <source src="{{ url_for('static', filename='videos/sky-tour.mp4') }}" type="video/mp4">
+                    </video>
+                </div>
+                <div class="offer-info">
+                    <h2>JAIS SKY TOUR</h2>
+                    <p>Experience the excitement of seeing the Hajar mountain range from a bird's eye view on the region's longest zipline tour. Cover a total of five kilometres at a breathtaking 1,600 metres above sea level, gliding at speeds up to 60 km/h from platform to platform on a series of six ziplines, connected by an impressive 1,250-metre-tall sky bridge. If you are looking to prolong the adrenaline rush after the Jais Flight or simply a more scenic experience, this family-friendly adventure activity is for you! It's a two-hour aerial sightseeing tour with a serious kick.</p>
+                    <div class="price-container">
+                        <span class="old-price">469.00 AED</span>
+                        <span class="new-price">399.00 AED</span>
+                    </div>
+                    <button class="book-now-btn offer-btn">BOOK NOW</button>
+                </div>
+            </div>
+            <h3 class="gallery-title">Gallery</h3>
+            <div class="gallery">
+                <img src="{{ url_for('static', filename='images/sky-tour-1.jpg') }}" alt="Sky Tour 1">
+                <img src="{{ url_for('static', filename='images/sky-tour-2.jpg') }}" alt="Sky Tour 2">
+                <img src="{{ url_for('static', filename='images/sky-tour-3.jpg') }}" alt="Sky Tour 3">
+            </div>
+        </div>
+
+        <div class="offer-content" id="bear-grylls">
+            <div class="offer-main">
+                <div class="video-container">
+                    <video controls poster="{{ url_for('static', filename='images/bear-grylls-poster.jpg') }}">
+                        <source src="{{ url_for('static', filename='videos/bear-grylls.mp4') }}" type="video/mp4">
+                    </video>
+                </div>
+                <div class="offer-info">
+                    <h2>Bear Grylls Explorers Camp</h2>
+                    <p>Learn dynamic, real-life survival skills in the heart of nature with our professional guides at the first branded camp accommodation in the world from the survival expert, Bear Grylls. Gain confidence outdoors, whether you're here for a half-day course, booked in for an adventure activity, an "exploriential" kid's program or an overnight Primal Survival Course, going into the wild at Jais is the purest state of adventure, perfect for children over 8, families, and team building.</p>
+                    <div class="price-container">
+                        <span class="old-price">625.00 AED</span>
+                        <span class="new-price">500.00 AED</span>
+                    </div>
+                    <button class="book-now-btn offer-btn">BOOK NOW</button>
+                </div>
+            </div>
+            <h3 class="gallery-title">Gallery</h3>
+            <div class="gallery">
+                <img src="{{ url_for('static', filename='images/bear-grylls-1.jpg') }}" alt="Bear Grylls 1">
+                <img src="{{ url_for('static', filename='images/bear-grylls-2.jpg') }}" alt="Bear Grylls 2">
+                <img src="{{ url_for('static', filename='images/bear-grylls-3.jpg') }}" alt="Bear Grylls 3">
+            </div>
+        </div>
+    </section>
+
+    <section class="booking-form-section">
+        <div class="form-background"></div>
+        <div class="form-container">
+            <h2>BOOK YOUR ADVENTURE</h2>
+            <form id="booking-form">
+                <div class="form-group">
+                    <input type="text" id="full-name" name="full-name" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone-number" name="phone-number" placeholder="Phone Number" required>
+                </div>
+                <input type="hidden" id="selected-offer" name="selected-offer" value="jais-flight">
+                <button type="submit" class="submit-btn">SUBMIT BOOKING</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="newsletter">
+                <h4>SUBSCRIBE TO NEWSLETTER</h4>
+                <p>Stay updated with the latest news, events, and exclusive offers on Jebel Jais</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="youremail@domain.com" required>
+                    <button type="submit">SUBSCRIBE NOW</button>
+                </form>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+            
+            <div class="quick-links">
+                <h4>QUICK LINKS</h4>
+                <div class="links-column">
+                    <a href="#">HOME</a>
+                    <a href="#">ABOUT US</a>
+                    <a href="#">PLAY</a>
+                    <a href="#">STAY</a>
+                </div>
+                <h5>CONTACT DETAILS</h5>
+                <div class="links-column">
+                    <p>PHONE: +971 04 815 7333</p>
+                    <p>EMAIL: INFO@JEBELJAIS.COM</p>
+                    <p>SOCIAL MEDIA</p>
+                </div>
+            </div>
+            
+            <div class="brand-info">
+                <img src="{{ url_for('static', filename='images/logo.webp') }}" alt="Jebel Jais" class="brand-logo">
+                <div class="brand-title">JEBEL JAIS</div>
+                <div class="brand-subtitle">RAS AL KHAIMAH</div>
+                <p>Jebel Jais, the highest peak in the United Arab Emirates, invites adventure seekers and nature enthusiasts to discover its stunning landscapes and exciting activities. Its purpose is to enrich the lifestyle and experiences of residents and visitors in Ras Al Khaimah by fostering the development of leisure, entertainment, and dining venues in the mountains.</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2025 JEBEL JAIS | RAS AL KHAIMAH. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
