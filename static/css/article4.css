@@ -1,0 +1,340 @@
+/* General layout */
+.a4-main {
+  max-width: 980px;
+  margin: 50px auto;
+  padding: 0 22px;
+}
+.a4-section {
+  margin: 40px 0;
+  opacity: 0;
+  transform: translateY(18px);
+}
+.a4-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.55s ease;
+}
+
+/* Back to blog */
+.a4-back {
+  position: fixed;
+  top: 70px;
+  left: 16px;
+  z-index: 1200;
+  background: rgba(19, 41, 75, 0.85);
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+  transition: transform 0.2s ease;
+}
+.a4-back:hover {
+  transform: translateY(-1px);
+}
+
+/* Light hero */
+.a4-hero {
+  height: 46vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.7)
+    ),
+    var(--hero) center/cover no-repeat;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.a4-hero-inner {
+  max-width: 900px;
+  padding: 0 1.6rem;
+  animation: a4fade 0.8s ease both;
+}
+.a4-hero h1 {
+  font-size: 2.5rem;
+  color: #13294b;
+  margin-bottom: 0.5rem;
+}
+.a4-hero p {
+  color: #2c3e50;
+  opacity: 0.9;
+  font-size: 1.05rem;
+}
+.a4-meta {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+@keyframes a4fade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Headings */
+.a4-h {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #13294b;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+.a4-h .ico {
+  width: 20px;
+  height: 20px;
+}
+
+/* Intro */
+.lead {
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Comparison cards */
+.a4-comp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.a4-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeef4;
+}
+.a4-card.good {
+  outline: 2px solid rgba(255, 107, 53, 0.35);
+}
+.a4-card.bad {
+  outline: 2px solid rgba(19, 41, 75, 0.08);
+}
+
+.card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.card-head h3 {
+  margin: 0;
+  color: #13294b;
+  font-size: 1.2rem;
+}
+.price {
+  font-weight: 800;
+  color: #ff6b35;
+}
+
+.card-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  display: grid;
+  gap: 6px;
+}
+.card-list li {
+  position: relative;
+  padding-left: 26px;
+  color: #333;
+}
+.card-list li.pos::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  background: #e9f9ed;
+  color: #1c7c2e;
+  font-weight: 800;
+  font-size: 12px;
+}
+.card-list li.neg::before {
+  content: "✖";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  background: #ffecec;
+  color: #b32222;
+  font-weight: 800;
+  font-size: 12px;
+}
+.card-list li.neu::before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  color: #888;
+}
+.card-note {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 6px;
+}
+
+/* Bars (chart) */
+.a4-bars {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+.bar {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+.b-label {
+  color: #13294b;
+  font-weight: 700;
+}
+.b-track {
+  background: #eef2f6;
+  border-radius: 999px;
+  height: 14px;
+  overflow: hidden;
+}
+.b-fill {
+  height: 100%;
+  background: #ff6b35;
+  border-radius: 999px;
+  width: 0;
+} /* animated via JS */
+.b-num {
+  color: #666;
+  font-size: 0.9rem;
+}
+.a4-hint {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 6px;
+}
+
+/* Mini “hidden costs” */
+.a4-mini {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.mini {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeef4;
+}
+.m-ico {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.m-title {
+  font-weight: 700;
+  color: #13294b;
+  margin-bottom: 4px;
+}
+.mini p {
+  color: #555;
+}
+
+/* Benefits */
+.a4-benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+}
+.ben {
+  background: #fff;
+  border: 1px solid #eaeef4;
+  border-radius: 14px;
+  padding: 12px 14px;
+  color: #2c3e50;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* FAQ */
+.a4-acc {
+  display: grid;
+  gap: 8px;
+}
+.acc-btn {
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #e6ecf3;
+  background: #fff;
+  font-weight: 600;
+  color: #13294b;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.acc-btn:hover {
+  background: #f7f9fc;
+}
+.acc-panel {
+  display: none;
+  padding: 12px 14px;
+  background: #fbfdff;
+  border: 1px solid #e6ecf3;
+  border-radius: 12px;
+  color: #555;
+}
+
+/* Final CTA */
+.a4-final {
+  text-align: center;
+  padding: 44px 20px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #13294b 0%, #0a2139 100%);
+  color: #fff;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+.a4-cta {
+  margin-top: 14px;
+  background: #ff6b35;
+  color: #fff;
+  border: 0;
+  padding: 14px 24px;
+  border-radius: 26px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+.a4-cta:hover {
+  background: #e55a2b;
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .a4-comp {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 520px) {
+  .a4-hero h1 {
+    font-size: 2rem;
+  }
+  .bar {
+    grid-template-columns: 120px 1fr auto;
+  }
+}

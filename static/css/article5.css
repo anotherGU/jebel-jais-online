@@ -1,0 +1,258 @@
+/* Layout */
+.a5-main {
+  max-width: 980px;
+  margin: 50px auto;
+  padding: 0 22px;
+}
+.a5-section {
+  margin: 38px 0;
+  opacity: 0;
+  transform: translateY(18px);
+}
+.a5-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.55s ease;
+}
+
+/* Back to blog */
+.a5-back {
+  position: fixed;
+  top: 70px;
+  left: 16px;
+  z-index: 1200;
+  background: rgba(19, 41, 75, 0.85);
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+  transition: transform 0.2s ease;
+}
+.a5-back:hover {
+  transform: translateY(-1px);
+}
+
+/* Hero (light) */
+.a5-hero {
+  height: 46vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.7)
+    ),
+    var(--hero) center/cover no-repeat;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.a5-hero-inner {
+  max-width: 900px;
+  padding: 0 1.6rem;
+  animation: a5fade 0.8s ease both;
+}
+.a5-hero h1 {
+  font-size: 2.5rem;
+  color: #13294b;
+  margin-bottom: 0.5rem;
+}
+.a5-hero p {
+  color: #2c3e50;
+  opacity: 0.9;
+  font-size: 1.05rem;
+}
+.a5-meta {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+@keyframes a5fade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Intro */
+.lead {
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Headings */
+.a5-h {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #13294b;
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+.a5-h .ico {
+  width: 20px;
+  height: 20px;
+}
+
+/* Timeline */
+.a5-timeline {
+  position: relative;
+  margin: 20px 0 10px;
+}
+.a5-step {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 18px;
+  align-items: center;
+  margin: 24px 0;
+  opacity: 0;
+  transform: translateY(22px);
+}
+.a5-step.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease;
+}
+.a5-step.reverse {
+  grid-template-columns: 0.95fr 1.05fr;
+}
+
+.a5-col img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+.a5-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeef4;
+}
+.a5-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #ff6b35;
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 6px;
+  box-shadow: 0 6px 18px rgba(255, 107, 53, 0.35);
+}
+.a5-card h3 {
+  color: #13294b;
+  margin-bottom: 6px;
+  font-size: 1.15rem;
+}
+.a5-card p {
+  color: #555;
+  line-height: 1.6;
+}
+.a5-note {
+  margin-top: 8px;
+  background: #fbfdff;
+  border: 1px solid #e6ecf3;
+  color: #2c3e50;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
+
+/* Changes & Support grid */
+.a5-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.a5-box {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid #eaeef4;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+.b-emoji {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.a5-box h4 {
+  margin: 2px 0 4px;
+  color: #13294b;
+}
+.a5-box p {
+  color: #555;
+}
+
+/* FAQ */
+.a5-acc {
+  display: grid;
+  gap: 8px;
+}
+.acc-btn {
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #e6ecf3;
+  background: #fff;
+  font-weight: 600;
+  color: #13294b;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.acc-btn:hover {
+  background: #f7f9fc;
+}
+.acc-panel {
+  display: none;
+  padding: 12px 14px;
+  background: #fbfdff;
+  border: 1px solid #e6ecf3;
+  border-radius: 12px;
+  color: #555;
+}
+
+/* Final CTA */
+.a5-final {
+  text-align: center;
+  padding: 44px 20px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #13294b 0%, #0a2139 100%);
+  color: #fff;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+.a5-cta {
+  margin-top: 14px;
+  background: #ff6b35;
+  color: #fff;
+  border: 0;
+  padding: 14px 24px;
+  border-radius: 26px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+.a5-cta:hover {
+  background: #e55a2b;
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .a5-step,
+  .a5-step.reverse {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 520px) {
+  .a5-hero h1 {
+    font-size: 2rem;
+  }
+}
