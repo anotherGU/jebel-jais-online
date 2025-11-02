@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - Jebel Jais Ras Al Khaimah</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='images/visitjebeljais.com logo22 (3).png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}?v={{ css_version }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Privacy Policy Specific Styles */
+      .policy-hero {
+        background: linear-gradient(135deg, #0a2139 0%, #13294b 100%);
+        padding: 120px 2rem 80px;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .policy-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("{{ url_for('static', filename='images/privacy-bg.jpg') }}")
+          center/cover no-repeat;
+        opacity: 0.1;
+      }
+
+      .policy-hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .policy-hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        animation: fadeInUp 0.8s ease;
+      }
+
+      .policy-hero p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        animation: fadeInUp 0.8s ease 0.2s both;
+      }
+
+      .policy-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 80px 2rem;
+        background: white;
+      }
+
+      .policy-section {
+        margin-bottom: 4rem;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .policy-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .policy-section h2 {
+        color: #2c3e50;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #ff6b35;
+        display: inline-block;
+      }
+
+      .policy-section h3 {
+        color: #2c3e50;
+        font-size: 1.4rem;
+        margin: 2rem 0 1rem;
+      }
+
+      .policy-section p {
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .policy-section ul {
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+      }
+
+      .policy-section li {
+        margin-bottom: 0.5rem;
+        position: relative;
+      }
+
+      .policy-section li::before {
+        content: "•";
+        color: #ff6b35;
+        font-weight: bold;
+        position: absolute;
+        left: -1rem;
+      }
+
+      .info-card {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-left: 4px solid #ff6b35;
+        padding: 1.5rem;
+        border-radius: 0 10px 10px 0;
+        margin: 2rem 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .info-card:hover {
+        transform: translateX(10px);
+      }
+
+      .interactive-element {
+        background: white;
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .interactive-element::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 107, 53, 0.1),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .interactive-element:hover::before {
+        left: 100%;
+      }
+
+      .interactive-element:hover {
+        border-color: #ff6b35;
+        box-shadow: 0 10px 25px rgba(255, 107, 53, 0.1);
+      }
+
+      .interactive-element h4 {
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .interactive-element h4::before {
+        content: "🔒";
+        font-size: 1.2rem;
+      }
+
+      .contact-info {
+        background: linear-gradient(135deg, #0a2139 0%, #13294b 100%);
+        color: white;
+        padding: 3rem 2rem;
+        border-radius: 15px;
+        text-align: center;
+        margin: 3rem 0;
+      }
+
+      .contact-info h3 {
+        color: #ff6b35;
+        margin-bottom: 1rem;
+      }
+
+      .last-updated {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 2px solid #e9ecef;
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #ff6b35;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 1.5rem;
+        box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        transition: all 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1000;
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .back-to-top:hover {
+        background: #e55a2b;
+        transform: translateY(-3px);
+      }
+
+      @media (max-width: 768px) {
+        .policy-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .policy-hero p {
+          font-size: 1rem;
+        }
+
+        .policy-content {
+          padding: 60px 1rem;
+        }
+
+        .policy-section h2 {
+          font-size: 1.6rem;
+        }
+
+        .back-to-top {
+          bottom: 20px;
+          right: 20px;
+          width: 45px;
+          height: 45px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="burger-menu" id="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="nav-links" id="nav-links">
+          <a href="/">HOME</a>
+          <a href="#">ABOUT US</a>
+          <a href="#">PLAY</a>
+          <a href="#">STAY</a>
+          <a href="#">CONTACT</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-fullscreen" id="mobile-menu">
+      <div class="mobile-menu-container">
+        <button class="mobile-menu-close" id="mobile-menu-close">
+          <span></span>
+          <span></span>
+        </button>
+        <div class="mobile-menu-header">
+          <div class="mobile-menu-title">JEBEL JAIS</div>
+          <div class="mobile-menu-subtitle">RAS AL KHAIMAH</div>
+        </div>
+        <nav class="mobile-nav-links">
+          <a href="/" class="mobile-nav-link">HOME</a>
+          <a href="#" class="mobile-nav-link">ABOUT US</a>
+          <a href="#" class="mobile-nav-link">PLAY</a>
+          <a href="#" class="mobile-nav-link">STAY</a>
+          <a href="#" class="mobile-nav-link">CONTACT</a>
+        </nav>
+        <button class="mobile-book-now-btn" onclick="window.location='/'">
+          BOOK NOW
+        </button>
+      </div>
+    </div>
+
+    <section class="policy-hero">
+      <div class="policy-hero-content">
+        <h1>Privacy Policy</h1>
+        <p>Your privacy and data security are our top priority</p>
+      </div>
+    </section>
+
+    <div class="policy-content">
+      <div class="policy-section" id="introduction">
+        <h2>Introduction</h2>
+        <p>
+          Welcome to Jebel Jais Ras Al Khaimah. We are committed to protecting
+          your personal information and your right to privacy. This Privacy
+          Policy explains how we collect, use, disclose, and safeguard your
+          information when you visit our website and use our services.
+        </p>
+
+        <div class="interactive-element" onclick="toggleInfo('info1')">
+          <h4>Why We Value Your Privacy</h4>
+          <p>Click to learn more about our commitment to data protection...</p>
+          <div
+            id="info1"
+            style="
+              display: none;
+              margin-top: 1rem;
+              padding-top: 1rem;
+              border-top: 1px solid #e9ecef;
+            "
+          >
+            <p>
+              We believe that transparency about the use of your personal
+              information is essential. We process your data only for legitimate
+              purposes, and we implement appropriate security measures to
+              protect it.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="policy-section" id="information-collection">
+        <h2>Information We Collect</h2>
+
+        <h3>Personal Information</h3>
+        <p>
+          We collect personal information that you voluntarily provide to us
+          when you:
+        </p>
+        <ul>
+          <li>Book activities and experiences</li>
+          <li>Subscribe to our newsletter</li>
+          <li>Contact our customer service</li>
+          <li>Participate in surveys or promotions</li>
+        </ul>
+
+        <div class="info-card">
+          <strong>Examples of personal information we collect:</strong>
+          <p>
+            Name, email address, phone number, payment information, booking
+            details, and any other information you choose to provide.
+          </p>
+        </div>
+
+        <h3>Automatically Collected Information</h3>
+        <p>
+          When you visit our website, we automatically collect certain
+          information about your device and usage patterns:
+        </p>
+        <ul>
+          <li>IP address and browser type</li>
+          <li>Pages visited and time spent</li>
+          <li>Referring website and search terms</li>
+          <li>Device characteristics and operating system</li>
+        </ul>
+      </div>
+
+      <div class="policy-section" id="how-we-use">
+        <h2>How We Use Your Information</h2>
+        <p>
+          We use the information we collect for various purposes, including:
+        </p>
+
+        <div class="interactive-element" onclick="toggleInfo('info2')">
+          <h4>Service Provision & Booking Management</h4>
+          <p>Click to see how we process your bookings...</p>
+          <div
+            id="info2"
+            style="
+              display: none;
+              margin-top: 1rem;
+              padding-top: 1rem;
+              border-top: 1px solid #e9ecef;
+            "
+          >
+            <p>
+              We use your information to process bookings, send confirmations,
+              manage your reservations, and provide customer support for your
+              Jebel Jais experiences.
+            </p>
+          </div>
+        </div>
+
+        <div class="interactive-element" onclick="toggleInfo('info3')">
+          <h4>Marketing & Communications</h4>
+          <p>Click to understand our communication practices...</p>
+          <div
+            id="info3"
+            style="
+              display: none;
+              margin-top: 1rem;
+              padding-top: 1rem;
+              border-top: 1px solid #e9ecef;
+            "
+          >
+            <p>
+              With your consent, we may send you promotional emails about new
+              activities, special offers, and updates about Jebel Jais. You can
+              unsubscribe at any time.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="policy-section" id="data-sharing">
+        <h2>Data Sharing and Disclosure</h2>
+        <p>We may share your information in the following situations:</p>
+        <ul>
+          <li>
+            <strong>Service Providers:</strong> With trusted third parties who
+            assist us in operating our website and services
+          </li>
+          <li>
+            <strong>Legal Requirements:</strong> When required by law or to
+            protect our rights
+          </li>
+          <li>
+            <strong>Business Transfers:</strong> In connection with any merger
+            or sale of company assets
+          </li>
+        </ul>
+
+        <div class="info-card">
+          <strong
+            >We do NOT sell your personal information to third parties.</strong
+          >
+          <p>
+            Your data is shared only with trusted partners who help us provide
+            you with the best Jebel Jais experience.
+          </p>
+        </div>
+      </div>
+
+      <div class="policy-section" id="data-security">
+        <h2>Data Security</h2>
+        <p>
+          We implement appropriate technical and organizational security
+          measures to protect your personal information against unauthorized
+          access, alteration, disclosure, or destruction.
+        </p>
+
+        <div class="interactive-element">
+          <h4>🔐 Our Security Measures Include:</h4>
+          <ul>
+            <li>SSL encryption for all data transmissions</li>
+            <li>Regular security assessments and updates</li>
+            <li>Limited access to personal information</li>
+            <li>Secure payment processing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="policy-section" id="your-rights">
+        <h2>Your Privacy Rights</h2>
+        <p>
+          Depending on your location, you may have the following rights
+          regarding your personal information:
+        </p>
+
+        <div class="interactive-element" onclick="toggleInfo('info4')">
+          <h4>Access and Control</h4>
+          <p>Click to learn about your rights...</p>
+          <div
+            id="info4"
+            style="
+              display: none;
+              margin-top: 1rem;
+              padding-top: 1rem;
+              border-top: 1px solid #e9ecef;
+            "
+          >
+            <ul>
+              <li>
+                <strong>Access:</strong> Request copies of your personal data
+              </li>
+              <li>
+                <strong>Rectification:</strong> Request correction of inaccurate
+                data
+              </li>
+              <li>
+                <strong>Erasure:</strong> Request deletion of your personal data
+              </li>
+              <li>
+                <strong>Restriction:</strong> Request limitation of processing
+              </li>
+              <li>
+                <strong>Objection:</strong> Object to our processing of your
+                data
+              </li>
+              <li>
+                <strong>Portability:</strong> Request transfer of your data
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-info">
+        <h3>Contact Us</h3>
+        <p>
+          If you have any questions about this Privacy Policy or our data
+          practices, please contact us:
+        </p>
+        <p>Email: privacy@jebeljais.com</p>
+        <p>Phone: +971 04 815 7333</p>
+      </div>
+
+      <div class="last-updated">
+        <p>Last updated: December 2024</p>
+      </div>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <footer class="footer">
+      <!-- Same footer as index.html -->
+      <div class="footer-main">
+        <div class="newsletter">
+          <div class="social-links">
+            <a href="#">Facebook</a>
+          </div>
+        </div>
+        <div class="quick-links">
+          <h4>QUICK LINKS</h4>
+          <div class="links-column">
+            <a href="/">HOME</a>
+            <a href="#">ABOUT US</a>
+            <a href="#">PLAY</a>
+            <a href="#">STAY</a>
+          </div>
+          <h5>CONTACT DETAILS</h5>
+          <div class="links-column">
+            <p>PHONE: +971 04 815 7333</p>
+            <p>EMAIL: INFO@JEBELJAIS.COM</p>
+          </div>
+        </div>
+        <div class="brand-info">
+          <img
+            src="{{ url_for('static', filename='images/logo.webp') }}"
+            alt="Jebel Jais"
+            class="brand-logo"
+          />
+          <div class="brand-title">JEBEL JAIS</div>
+          <div class="brand-subtitle">RAS AL KHAIMAH</div>
+          <p>
+            Jebel Jais, the highest peak in the United Arab Emirates, invites
+            adventure seekers and nature enthusiasts to discover its stunning
+            landscapes and exciting activities.
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2025 JEBEL JAIS | RAS AL KHAIMAH. All rights reserved.</p>
+          <div class="footer-links">
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms-conditions">Terms & Conditions</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Interactive elements functionality
+      function toggleInfo(id) {
+        const element = document.getElementById(id);
+        if (element.style.display === "none") {
+          element.style.display = "block";
+        } else {
+          element.style.display = "none";
+        }
+      }
+
+      // Scroll animations
+      document.addEventListener("DOMContentLoaded", function () {
+        const policySections = document.querySelectorAll(".policy-section");
+        const backToTop = document.getElementById("backToTop");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        policySections.forEach((section) => {
+          observer.observe(section);
+        });
+
+        // Back to top button
+        window.addEventListener("scroll", () => {
+          if (window.pageYOffset > 300) {
+            backToTop.classList.add("visible");
+          } else {
+            backToTop.classList.remove("visible");
+          }
+        });
+
+        backToTop.addEventListener("click", (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // Mobile menu functionality (reuse from main script)
+        const burgerMenu = document.getElementById("burger-menu");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+        function toggleMobileMenu() {
+          burgerMenu.classList.toggle("active");
+          mobileMenu.classList.toggle("active");
+          document.body.style.overflow = mobileMenu.classList.contains("active")
+            ? "hidden"
+            : "";
+        }
+
+        function closeMobileMenu() {
+          burgerMenu.classList.remove("active");
+          mobileMenu.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        burgerMenu.addEventListener("click", toggleMobileMenu);
+        mobileMenuClose.addEventListener("click", closeMobileMenu);
+
+        document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+          link.addEventListener("click", closeMobileMenu);
+        });
+      });
+    </script>
+  </body>
+</html>

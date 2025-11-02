@@ -84,7 +84,7 @@ body {
   transition: all 0.3s ease;
   text-transform: uppercase;
   font-size: 0.9rem;
-  opacity: 0;
+  opacity: 1;
 }
 
 .navbar.loaded .book-now-btn {
@@ -179,6 +179,51 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 300px; /* Минимальная высота для лучшего отображения фона */
+}
+
+.offer-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(3px); /* Сила размытия */
+  opacity: 0.7; /* Прозрачность фона */
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.offer-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Фоновые изображения для каждой карточки */
+.offer-card[data-offer="jais-flight"]::before {
+  background-image: url("../images/jais-flight-1.jpg"); /* Замените на ваше изображение */
+}
+
+.offer-card[data-offer="jais-sky-tour"]::before {
+  background-image: url("../images/sky-tour-1.jpg"); /* Замените на ваше изображение */
+}
+
+.offer-card[data-offer="bear-grylls"]::before {
+  background-image: url("../images/bear-grylls-1.jpg"); /* Замените на ваше изображение */
+}
+
+.offer-card:hover::before {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.offer-card.active::before {
+  filter: blur(2px);
+  opacity: 0.7;
 }
 
 .offer-card.active {
@@ -189,21 +234,7 @@ body {
 .offer-card:hover {
   transform: translateY(-10px);
   border-color: #ff6b35;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-.discount-badge {
-  position: absolute;
-  top: 15px;
-  right: -30px;
-  background: #ff6b35;
-  color: white;
-  padding: 5px 40px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  transform: rotate(45deg);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color: black;
 }
 
 .offer-card h3 {
@@ -213,15 +244,43 @@ body {
 }
 
 .offer-card p {
-  color: #666;
+  color: #2c3e50; /* Более темный цвет для лучшей читаемости */
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
+  font-weight: 500;
 }
 
 .card-btn {
   margin-top: auto;
   padding: 10px 25px;
   font-size: 0.8rem;
+  background: rgba(255, 107, 53, 0.9); /* Полупрозрачный фон */
+  backdrop-filter: blur(5px); /* Дополнительное размытие для кнопки */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-btn:hover {
+  background: rgba(229, 90, 43, 0.95);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .offer-card {
+    min-height: 250px;
+    padding: 1.5rem;
+  }
+
+  .offer-card::before {
+    filter: blur(6px); /* Меньше размытия на мобильных */
+  }
+
+  .offer-card:hover::before {
+    filter: blur(8px);
+  }
+
+  .offer-card.active::before {
+    filter: blur(3px);
+  }
 }
 
 .offer-details {
@@ -1107,5 +1166,242 @@ body {
 
   .mobile-menu-close span {
     width: 20px;
+  }
+}
+
+/* Discount Timer Section */
+.discount-timer {
+  background: linear-gradient(135deg, #0a2139 0%, #13294b 100%);
+  padding: 80px 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.discount-timer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../images/timer-bg.jpg") center/cover no-repeat;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.timer-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.timer-content {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease;
+}
+
+.timer-title {
+  color: #ff6b35;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.timer-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.timer-unit {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem 1rem;
+  min-width: 100px;
+  border: 2px solid rgba(255, 107, 53, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.timer-unit::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 107, 53, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.timer-unit:hover::before {
+  left: 100%;
+}
+
+.timer-unit:hover {
+  transform: translateY(-5px);
+  border-color: #ff6b35;
+  box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+}
+
+.timer-number {
+  display: block;
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 10px rgba(255, 107, 53, 0.5);
+  animation: countdown 1s ease;
+}
+
+@keyframes countdown {
+  0% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.timer-label {
+  display: block;
+  font-size: 0.9rem;
+  color: #ff6b35;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.timer-separator {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ff6b35;
+  margin: 0 0.5rem;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.timer-message {
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.timer-ribbon {
+  position: absolute;
+  top: 20px;
+  right: -30px;
+  background: #ff6b35;
+  color: white;
+  padding: 8px 40px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .discount-timer {
+    padding: 60px 1rem;
+  }
+
+  .timer-content {
+    padding: 2rem 1rem;
+  }
+
+  .timer-title {
+    font-size: 1.4rem;
+  }
+
+  .timer-display {
+    gap: 0.5rem;
+  }
+
+  .timer-unit {
+    min-width: 70px;
+    padding: 1rem 0.5rem;
+  }
+
+  .timer-number {
+    font-size: 2rem;
+  }
+
+  .timer-separator {
+    font-size: 1.8rem;
+  }
+
+  .timer-ribbon {
+    top: 15px;
+    right: -35px;
+    padding: 6px 35px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timer-display {
+    gap: 0.3rem;
+  }
+
+  .timer-unit {
+    min-width: 51px;
+    padding: 0.8rem 0.3rem;
+  }
+
+  .timer-number {
+    font-size: 1.5rem;
+  }
+
+  .timer-label {
+    font-size: 0.7rem;
+  }
+
+  .timer-separator {
+    font-size: 1.2rem;
+    margin: 0 0.2rem;
   }
 }

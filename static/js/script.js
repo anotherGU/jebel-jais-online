@@ -169,6 +169,57 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  const daysElement = document.getElementById("days");
+  const hoursElement = document.getElementById("hours");
+  const minutesElement = document.getElementById("minutes");
+  const secondsElement = document.getElementById("seconds");
+
+  // Устанавливаем дату окончания (текущая дата + 30 дней)
+  const countDownDate = new Date();
+  countDownDate.setDate(countDownDate.getDate() + 30);
+  countDownDate.setHours(23, 59, 59, 999);
+
+  function updateTimer() {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
+
+    if (distance < 0) {
+      // Таймер истек
+      daysElement.textContent = "00";
+      hoursElement.textContent = "00";
+      minutesElement.textContent = "00";
+      secondsElement.textContent = "00";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Анимируем изменение чисел
+    animateNumber(daysElement, days);
+    animateNumber(hoursElement, hours);
+    animateNumber(minutesElement, minutes);
+    animateNumber(secondsElement, seconds);
+  }
+
+  function animateNumber(element, newValue) {
+    const currentValue = parseInt(element.textContent);
+    if (currentValue !== newValue) {
+      element.style.animation = "none";
+      void element.offsetWidth; // Trigger reflow
+      element.style.animation = "countdown 1s ease";
+      element.textContent = newValue.toString().padStart(2, "0");
+    }
+  }
+
+  // Обновляем таймер каждую секунду
+  updateTimer();
+  setInterval(updateTimer, 1000);
+
   const blogCta = document.querySelector(".blog-cta-section");
   const observer = new IntersectionObserver(
     (entries) => {
@@ -239,3 +290,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+initializeCountdown();

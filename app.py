@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
-app.config['CSS_VERSION'] = '2'
+app.config['CSS_VERSION'] = '3'
 
 @app.route('/')
 def index():
@@ -89,6 +89,14 @@ def blog_article_6():
 @app.route('/blog/is-it-safe-for-kids')
 def blog_article_7():
     return render_template('blog-article-7.html')
+
+@app.route('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy-policy.html')
+
+@app.route('/terms-conditions')
+def terms_conditions():
+    return render_template('terms-conditions.html')
 
 
 @app.route('/book', methods=['POST'])

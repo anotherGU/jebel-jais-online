@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms & Conditions - Jebel Jais Ras Al Khaimah</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='images/visitjebeljais.com logo22 (3).png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}?v={{ css_version }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Terms & Conditions Specific Styles */
+      .terms-hero {
+        background: linear-gradient(135deg, #0a2139 0%, #13294b 100%);
+        padding: 120px 2rem 80px;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .terms-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("{{ url_for('static', filename='images/terms-bg.jpg') }}")
+          center/cover no-repeat;
+        opacity: 0.1;
+      }
+
+      .terms-hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .terms-hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        animation: fadeInUp 0.8s ease;
+      }
+
+      .terms-hero p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        animation: fadeInUp 0.8s ease 0.2s both;
+      }
+
+      .terms-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 80px 2rem;
+        background: white;
+      }
+
+      .terms-section {
+        margin-bottom: 4rem;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .terms-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .terms-section h2 {
+        color: #2c3e50;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #ff6b35;
+        display: inline-block;
+      }
+
+      .terms-section h3 {
+        color: #2c3e50;
+        font-size: 1.4rem;
+        margin: 2rem 0 1rem;
+      }
+
+      .terms-section p {
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .terms-section ul,
+      .terms-section ol {
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+      }
+
+      .terms-section li {
+        margin-bottom: 0.5rem;
+        position: relative;
+      }
+
+      .terms-section ul li::before {
+        content: "•";
+        color: #ff6b35;
+        font-weight: bold;
+        position: absolute;
+        left: -1rem;
+      }
+
+      .terms-section ol {
+        list-style-type: decimal;
+      }
+
+      .terms-section ol li::before {
+        content: none;
+      }
+
+      .warning-card {
+        background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+        border-left: 4px solid #ffc107;
+        padding: 1.5rem;
+        border-radius: 0 10px 10px 0;
+        margin: 2rem 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .important-card {
+        background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+        border-left: 4px solid #17a2b8;
+        padding: 1.5rem;
+        border-radius: 0 10px 10px 0;
+        margin: 2rem 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .interactive-term {
+        background: white;
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .interactive-term::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 107, 53, 0.1),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .interactive-term:hover::before {
+        left: 100%;
+      }
+
+      .interactive-term:hover {
+        border-color: #ff6b35;
+        box-shadow: 0 10px 25px rgba(255, 107, 53, 0.1);
+      }
+
+      .interactive-term h4 {
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .term-details {
+        display: none;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e9ecef;
+      }
+
+      .table-container {
+        overflow-x: auto;
+        margin: 2rem 0;
+      }
+
+      .terms-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .terms-table th {
+        background: #2c3e50;
+        color: white;
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+      }
+
+      .terms-table td {
+        padding: 1rem;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .terms-table tr:nth-child(even) {
+        background: #f8f9fa;
+      }
+
+      .terms-table tr:hover {
+        background: #e9ecef;
+      }
+
+      .acceptance-section {
+        background: linear-gradient(135deg, #0a2139 0%, #13294b 100%);
+        color: white;
+        padding: 3rem 2rem;
+        border-radius: 15px;
+        text-align: center;
+        margin: 3rem 0;
+      }
+
+      .acceptance-section h3 {
+        color: #ff6b35;
+        margin-bottom: 1rem;
+      }
+
+      .last-updated {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 2px solid #e9ecef;
+      }
+
+      @media (max-width: 768px) {
+        .terms-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .terms-hero p {
+          font-size: 1rem;
+        }
+
+        .terms-content {
+          padding: 60px 1rem;
+        }
+
+        .terms-section h2 {
+          font-size: 1.6rem;
+        }
+
+        .terms-table {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="burger-menu" id="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-fullscreen" id="mobile-menu">
+      <div class="mobile-menu-container">
+        <button class="mobile-menu-close" id="mobile-menu-close">
+          <span></span>
+          <span></span>
+        </button>
+        <div class="mobile-menu-header">
+          <div class="mobile-menu-title">JEBEL JAIS</div>
+          <div class="mobile-menu-subtitle">RAS AL KHAIMAH</div>
+        </div>
+        <nav class="mobile-nav-links">
+          <a href="/" class="mobile-nav-link">HOME</a>
+          <a href="#" class="mobile-nav-link">ABOUT US</a>
+          <a href="#" class="mobile-nav-link">PLAY</a>
+          <a href="#" class="mobile-nav-link">STAY</a>
+          <a href="#" class="mobile-nav-link">CONTACT</a>
+        </nav>
+        <button class="mobile-book-now-btn" onclick="window.location='/'">
+          BOOK NOW
+        </button>
+      </div>
+    </div>
+
+    <section class="terms-hero">
+      <div class="terms-hero-content">
+        <h1>Terms & Conditions</h1>
+        <p>Please read these terms carefully before using our services</p>
+      </div>
+    </section>
+
+    <div class="terms-content">
+      <div class="terms-section" id="agreement">
+        <h2>Agreement to Terms</h2>
+        <p>
+          By accessing and using the Jebel Jais website and services, you accept
+          and agree to be bound by the terms and provision of this agreement.
+        </p>
+
+        <div class="interactive-term" onclick="toggleTerm('term1')">
+          <h4>📝 Your Acceptance</h4>
+          <p>
+            Click to understand what constitutes acceptance of these terms...
+          </p>
+          <div id="term1" class="term-details">
+            <p>
+              Your use of our website, booking of activities, or interaction
+              with our services constitutes your acceptance of these Terms &
+              Conditions. If you disagree with any part of these terms, you may
+              not access our services.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="terms-section" id="bookings">
+        <h2>Booking Terms</h2>
+
+        <h3>Reservation Process</h3>
+        <p>
+          All bookings are subject to availability and confirmation. To secure
+          your reservation:
+        </p>
+        <ol>
+          <li>Select your preferred activity and time slot</li>
+          <li>Provide accurate personal information</li>
+          <li>Complete the payment process</li>
+          <li>Receive booking confirmation via email</li>
+        </ol>
+
+        <div class="warning-card">
+          <strong>Important:</strong> Please arrive at least 45 minutes before
+          your scheduled activity for check-in and safety briefing.
+        </div>
+
+        <h3>Cancellation Policy</h3>
+
+        <div class="table-container">
+          <table class="terms-table">
+            <thead>
+              <tr>
+                <th>Time Before Activity</th>
+                <th>Cancellation Fee</th>
+                <th>Refund Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>More than 48 hours</td>
+                <td>No fee</td>
+                <td>100% refund</td>
+              </tr>
+              <tr>
+                <td>24-48 hours</td>
+                <td>25% fee</td>
+                <td>75% refund</td>
+              </tr>
+              <tr>
+                <td>Less than 24 hours</td>
+                <td>50% fee</td>
+                <td>50% refund</td>
+              </tr>
+              <tr>
+                <td>No show</td>
+                <td>100% fee</td>
+                <td>No refund</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="terms-section" id="safety">
+        <h2>Safety Requirements</h2>
+
+        <div class="interactive-term" onclick="toggleTerm('term2')">
+          <h4>⚡ Activity Restrictions</h4>
+          <p>Click to view important safety requirements...</p>
+          <div id="term2" class="term-details">
+            <ul>
+              <li>Minimum age: 8 years for most activities</li>
+              <li>Minimum weight: 30kg, Maximum weight: 120kg</li>
+              <li>Participants must be in good physical health</li>
+              <li>Not recommended for pregnant women</li>
+              <li>Certain medical conditions may restrict participation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="important-card">
+          <strong>Safety First:</strong> Our staff reserves the right to refuse
+          participation to anyone who does not meet safety requirements or
+          appears to be under the influence of alcohol or drugs.
+        </div>
+      </div>
+
+      <div class="terms-section" id="liability">
+        <h2>Liability and Responsibility</h2>
+
+        <h3>Participant Responsibility</h3>
+        <p>
+          By participating in our activities, you acknowledge and accept that:
+        </p>
+        <ul>
+          <li>Adventure activities involve inherent risks</li>
+          <li>You must follow all safety instructions</li>
+          <li>You are responsible for your personal belongings</li>
+          <li>You must disclose any relevant medical conditions</li>
+        </ul>
+
+        <div class="interactive-term" onclick="toggleTerm('term3')">
+          <h4>🛡️ Liability Waiver</h4>
+          <p>Click to understand our liability limitations...</p>
+          <div id="term3" class="term-details">
+            <p>
+              Jebel Jais Ras Al Khaimah and its operators are not liable for any
+              injuries, damages, or losses resulting from participant
+              negligence, failure to follow instructions, or factors beyond our
+              reasonable control. We maintain comprehensive insurance and follow
+              international safety standards.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="terms-section" id="weather">
+        <h2>Weather Conditions</h2>
+        <p>
+          Adventure activities are weather-dependent. In case of unfavorable
+          weather conditions:
+        </p>
+
+        <div class="interactive-term" onclick="toggleTerm('term4')">
+          <h4>🌤️ Weather Policy</h4>
+          <p>Click to learn about our weather-related policies...</p>
+          <div id="term4" class="term-details">
+            <ul>
+              <li>Activities may be postponed or cancelled due to weather</li>
+              <li>We monitor weather conditions continuously</li>
+              <li>Decisions are made for participant safety</li>
+              <li>Full refunds provided for weather cancellations</li>
+              <li>Rescheduling options available</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="terms-section" id="intellectual">
+        <h2>Intellectual Property</h2>
+        <p>
+          All content on this website, including text, graphics, logos, and
+          images, is the property of Jebel Jais Ras Al Khaimah and protected by
+          intellectual property laws.
+        </p>
+
+        <div class="warning-card">
+          <strong>Photography:</strong> Professional photos and videos may be
+          taken during activities. By participating, you grant permission for
+          these to be used for promotional purposes.
+        </div>
+      </div>
+
+      <div class="acceptance-section">
+        <h3>Acceptance of Terms</h3>
+        <p>
+          By using our website and services, you acknowledge that you have read,
+          understood, and agree to be bound by these Terms & Conditions.
+        </p>
+        <p>
+          If you have any questions, please contact us before making a booking.
+        </p>
+      </div>
+
+      <div class="last-updated">
+        <p>Last updated: December 2024</p>
+        <p>
+          These terms may be updated periodically. Please check back for
+          changes.
+        </p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <!-- Same footer as privacy policy -->
+      <div class="footer-main">
+        <div class="newsletter">
+          <div class="social-links">
+            <a href="#">Facebook</a>
+          </div>
+        </div>
+        <div class="quick-links">
+          <h4>QUICK LINKS</h4>
+          <div class="links-column">
+            <a href="/">HOME</a>
+            <a href="#">ABOUT US</a>
+            <a href="#">PLAY</a>
+            <a href="#">STAY</a>
+          </div>
+          <h5>CONTACT DETAILS</h5>
+          <div class="links-column">
+            <p>PHONE: +971 04 815 7333</p>
+            <p>EMAIL: INFO@JEBELJAIS.COM</p>
+          </div>
+        </div>
+        <div class="brand-info">
+          <img
+            src="{{ url_for('static', filename='images/logo.webp') }}"
+            alt="Jebel Jais"
+            class="brand-logo"
+          />
+          <div class="brand-title">JEBEL JAIS</div>
+          <div class="brand-subtitle">RAS AL KHAIMAH</div>
+          <p>
+            Jebel Jais, the highest peak in the United Arab Emirates, invites
+            adventure seekers and nature enthusiasts to discover its stunning
+            landscapes and exciting activities.
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2025 JEBEL JAIS | RAS AL KHAIMAH. All rights reserved.</p>
+          <div class="footer-links">
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms-conditions">Terms & Conditions</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Interactive terms functionality
+      function toggleTerm(id) {
+        const element = document.getElementById(id);
+        if (element.style.display === "none" || !element.style.display) {
+          element.style.display = "block";
+        } else {
+          element.style.display = "none";
+        }
+      }
+
+      // Scroll animations
+      document.addEventListener("DOMContentLoaded", function () {
+        const termsSections = document.querySelectorAll(".terms-section");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        termsSections.forEach((section) => {
+          observer.observe(section);
+        });
+
+        // Mobile menu functionality
+        const burgerMenu = document.getElementById("burger-menu");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+        function toggleMobileMenu() {
+          burgerMenu.classList.toggle("active");
+          mobileMenu.classList.toggle("active");
+          document.body.style.overflow = mobileMenu.classList.contains("active")
+            ? "hidden"
+            : "";
+        }
+
+        function closeMobileMenu() {
+          burgerMenu.classList.remove("active");
+          mobileMenu.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        burgerMenu.addEventListener("click", toggleMobileMenu);
+        mobileMenuClose.addEventListener("click", closeMobileMenu);
+
+        document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+          link.addEventListener("click", closeMobileMenu);
+        });
+      });
+    </script>
+  </body>
+</html>
