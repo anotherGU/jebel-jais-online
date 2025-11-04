@@ -8,6 +8,40 @@ document.addEventListener("DOMContentLoaded", function () {
   const heroBookBtn = document.querySelector(".hero-btn");
   const newsletterForm = document.querySelector(".newsletter-form");
 
+  const phoneInput = document.getElementById("phone-number");
+  const prefix = "+971";
+
+  // Устанавливаем префикс при загрузке
+  phoneInput.value = prefix;
+
+  phoneInput.addEventListener("focus", () => {
+    if (!phoneInput.value.startsWith(prefix)) {
+      phoneInput.value = prefix;
+    }
+    setTimeout(() => {
+      phoneInput.setSelectionRange(
+        phoneInput.value.length,
+        phoneInput.value.length
+      );
+    }, 0);
+  });
+
+  phoneInput.addEventListener("input", () => {
+    if (!phoneInput.value.startsWith(prefix)) {
+      phoneInput.value = prefix;
+    }
+  });
+
+  // Блокируем удаление префикса
+  phoneInput.addEventListener("keydown", (e) => {
+    if (
+      phoneInput.selectionStart <= prefix.length &&
+      (e.key === "Backspace" || e.key === "Delete")
+    ) {
+      e.preventDefault();
+    }
+  });
+
   // Элементы модального окна подтверждения
   const confirmationModal = document.getElementById("confirmation-modal");
   const confirmOfferName = document.getElementById("confirm-offer-name");
@@ -158,25 +192,35 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // ✅ Validate phone: only + and digits
-    const phoneRegex = /^\+?[0-9]+$/;
-    if (!phoneRegex.test(phoneInput.value.trim())) {
-      errorBox.innerText = "Phone number can contain digits and + only.";
+    // ✅ Validate phone: проверяем что номер начинается с +971 и содержит только цифры после префикса
+    const phoneValue = phoneInput.value.trim();
+    if (!phoneValue.startsWith(prefix)) {
+      errorBox.innerText = "Phone number must start with +971.";
       errorBox.style.display = "block";
       phoneInput.focus();
       return;
     }
 
-    // ✅ Optional: minimum phone length
-    if (phoneInput.value.trim().length < 8) {
+    // Проверяем что после префикса только цифры
+    const phoneDigits = phoneValue.slice(prefix.length);
+    const phoneRegex = /^[0-9]+$/;
+    if (!phoneRegex.test(phoneDigits)) {
+      errorBox.innerText = "Phone number can contain digits only after +971.";
+      errorBox.style.display = "block";
+      phoneInput.focus();
+      return;
+    }
+
+    // ✅ Optional: minimum phone length (без префикса)
+    if (phoneDigits.length < 7) {
       errorBox.innerText = "Phone number is too short.";
       errorBox.style.display = "block";
       phoneInput.focus();
       return;
     }
 
-    // ✅ Показываем модалку подтверждения вместо немедленной отправки
-    showConfirmationModal(nameInput.value.trim(), phoneInput.value.trim());
+    // ✅ Показываем модалку подтверждения
+    showConfirmationModal(nameInput.value.trim(), phoneValue);
   });
 
   // Функция показа модалки подтверждения
