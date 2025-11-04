@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
       price: price,
     };
 
-    fetch("http://localhost:3123/customer", {
+    fetch("/api/customer", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
