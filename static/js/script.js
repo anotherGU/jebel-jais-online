@@ -59,18 +59,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const offerInfo = {
     "jais-flight": {
       name: "JAIS FLIGHT",
-      price: "96.00 AED",
-      priceValue: 96,
+      price: "48.00 AED",
+      priceValue: 48,
     },
     "jais-sky-tour": {
       name: "JAIS SKY TOUR",
-      price: "79.00 AED",
-      priceValue: 79,
+      price: "39.00 AED",
+      priceValue: 39,
     },
     "bear-grylls": {
       name: "BEAR GRYLLS EXPLORERS CAMP",
-      price: "190.00 AED",
-      priceValue: 190,
+      price: "95.00 AED",
+      priceValue: 95,
     },
   };
 
