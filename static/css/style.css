@@ -835,8 +835,6 @@ body {
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-
-
 .blog-cta-section.visible {
   opacity: 1;
   transform: translateY(0);
@@ -1606,3 +1604,74 @@ body {
   }
 }
 
+/* === Refund Guarantee Block === */
+.refund-guarantee {
+  margin-top: 18px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.45rem;
+  backdrop-filter: blur(6px);
+  animation: fadeInUp 0.5s ease both;
+  margin-bottom: 20px;
+}
+
+.refund-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+/* Mobile style */
+@media (max-width: 480px) {
+  .refund-guarantee {
+    font-size: 0.85rem;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+  .refund-icon {
+    font-size: 1.2rem;
+  }
+}
+
+/* === Payment Info Block (Visa + Mastercard) === */
+.payment-info {
+  margin-top: 14px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.45rem;
+  backdrop-filter: blur(6px);
+  animation: fadeInUp 0.5s ease both;
+  margin-bottom: 20px;
+}
+
+.payment-icons {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .payment-info {
+    font-size: 0.85rem;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+  .payment-icons {
+    font-size: 1.2rem;
+  }
+}
