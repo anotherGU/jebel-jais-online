@@ -18,11 +18,11 @@
 
   // Update price from localStorage
   function updatePriceFromStorage() {
-    const price = localStorage.getItem("price");
+    const price = localStorage.getItem("totalPrice");
     const bookingId = localStorage.getItem("bookingId");
 
     if (price) {
-      paymentAmount.textContent = `AED ${price}.00`;
+      paymentAmount.textContent = `AED ${price}`;
     }
 
     if (bookingId) {

@@ -16,6 +16,65 @@
     />
   </head>
   <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <img
+          src="{{ url_for('static', filename='images/logo.webp') }}"
+          alt="Jebel Jais"
+          class="nav-logo"
+        />
+
+        <!-- Бургер-меню -->
+        <div class="burger-menu" id="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- Основное меню для десктопа -->
+        <div class="nav-links" id="nav-links">
+          <a href="#">HOME</a>
+          <a href="/about">ABOUT US</a>
+          <a href="/privacy-policy">POLICY</a>
+          <a href="/terms-conditions">TERMS </a>
+        </div>
+
+        <button
+          class="book-now-btn nav-btn"
+          onclick="window.location.href='/ras-al-khaima/event-tickets/jebel-jais/buy-tickets'"
+        >
+          BOOK NOW
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-menu-fullscreen" id="mobile-menu">
+      <div class="mobile-menu-container">
+        <button class="mobile-menu-close" id="mobile-menu-close">
+          <span></span>
+          <span></span>
+        </button>
+        <div class="mobile-menu-header">
+          <div class="mobile-menu-title">JEBEL JAIS</div>
+          <div class="mobile-menu-subtitle">RAS AL KHAIMAH</div>
+        </div>
+        <nav class="mobile-nav-links">
+          <a
+            href="/ras-al-khaima/event-tickets/jebel-jais/buy-tickets"
+            class="mobile-nav-link"
+            >HOME</a
+          >
+          <a href="/about" class="mobile-nav-link">ABOUT US</a>
+          <a href="/privacy-policy" class="mobile-nav-link">PRIVACY</a>
+          <a href="/terms-conditions" class="mobile-nav-link">TERMS</a>
+        </nav>
+        <button
+          class="mobile-book-now-btn"
+          onclick="window.location.href='/ras-al-khaima/event-tickets/jebel-jais/buy-tickets'"
+        >
+          BOOK NOW
+        </button>
+      </div>
+    </div>
     <!-- Hero -->
     <section class="hero-schedule">
       <div class="overlay"></div>
@@ -41,7 +100,6 @@
           aria-expanded="false"
         >
           <span class="dp-icon" aria-hidden="true">
-            <!-- calendar icon -->
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
               <path
                 d="M7 3v3M17 3v3M4 10h16M6 5h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"
@@ -55,7 +113,6 @@
             >Select a date</span
           >
           <span class="dp-caret" aria-hidden="true">
-            <!-- chevron down -->
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
               <path
                 d="M6 9l6 6 6-6"
@@ -68,58 +125,38 @@
           </span>
         </button>
 
-        <!-- TIME -->
-        <!-- ВСТАВЬ ВМЕСТО СТАРОГО БЛОКА В HTML -->
-        <div id="time-block" class="hidden">
-          <div
-            class="time-hint"
-            style="
-              margin-top: 16px;
-              margin-bottom: 8px;
-              color: #8a96a8;
-              font-weight: 600;
-            "
-          >
-            Keep in mind you need to arrive 15 minutes before start.
+        <!-- TICKET SELECTION -->
+        <div class="ticket-selection">
+          <h3 class="label">🎟️ Select Tickets</h3>
+
+          <div class="ticket-type">
+            <div class="ticket-info">
+              <span class="ticket-label">Adult</span>
+              <span class="ticket-unit-price" id="adult-unit">0 AED</span>
+            </div>
+            <div class="counter">
+              <button class="counter-btn" id="adult-minus">−</button>
+              <span class="counter-value" id="adult-count">1</span>
+              <button class="counter-btn" id="adult-plus">+</button>
+            </div>
           </div>
 
-          <label class="label" style="margin-top: 6px"
-            >🕒 Choose a timeslot</label
-          >
-          <button
-            id="tp-trigger"
-            class="dp-trigger"
-            type="button"
-            aria-haspopup="dialog"
-            aria-expanded="false"
-          >
-            <span class="dp-icon" aria-hidden="true">
-              <!-- clock icon -->
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 7v5l3 3M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </span>
-            <span id="tp-trigger-text" class="dp-trigger-text"
-              >Choose a timeslot</span
-            >
-            <span class="dp-caret" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M6 9l6 6 6-6"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </span>
-          </button>
+          <div class="ticket-type">
+            <div class="ticket-info">
+              <span class="ticket-label">Child</span>
+              <span class="ticket-unit-price" id="child-unit">0 AED</span>
+            </div>
+            <div class="counter">
+              <button class="counter-btn" id="child-minus">−</button>
+              <span class="counter-value" id="child-count">0</span>
+              <button class="counter-btn" id="child-plus">+</button>
+            </div>
+          </div>
+
+          <div class="total-box">
+            <span>Total:</span>
+            <strong id="total-price">0 AED</strong>
+          </div>
         </div>
 
         <!-- CONFIRM -->
@@ -314,42 +351,158 @@
       </div>
     </div>
 
-    <!-- ===== TimePicker MODAL ===== -->
-    <div
-      id="tp-modal"
-      class="dp-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="tp-title"
-      style="display: none"
-    >
-      <div class="dp-panel" role="document">
-        <!-- Top bar -->
-        <div class="dp-topbar">
-          <div id="tp-title" class="dp-title">Select a time</div>
-          <button id="tp-close" class="dp-close" aria-label="Close">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M6 6l12 12M18 6L6 18"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              />
-            </svg>
-          </button>
+    <!-- Модальное окно подтверждения -->
+    <div class="confirmation-modal" id="confirmation-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-icon">✈️</div>
+          <h3>Confirm Your Booking</h3>
         </div>
 
-        <!-- Grid with time slots (генерируется JS) -->
-        <div id="tp-grid" class="dp-grid" style="padding-top: 18px"></div>
+        <div class="offer-details-confirm">
+          <div class="detail-item">
+            <span class="detail-label">Activity:</span>
+            <span class="detail-value" id="confirm-offer-name"
+              >JAIS FLIGHT</span
+            >
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Price:</span>
+            <span class="detail-value price" id="confirm-offer-price"
+              >96.00 AED</span
+            >
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Name:</span>
+            <span class="detail-value" id="confirm-customer-name"></span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Phone:</span>
+            <span class="detail-value" id="confirm-customer-phone"></span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Date:</span>
+            <span class="detail-value" id="confirm-date"></span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Tickets:</span>
+            <span class="detail-value" id="confirm-tickets"></span>
+          </div>
+        </div>
 
-        <!-- Footer -->
-        <div class="dp-footer">
-          <button id="tp-cancel" class="dp-cancel" type="button">Cancel</button>
+        <div class="modal-features">
+          <div class="feature">
+            <span class="feature-icon">✓</span>
+            <span>Free cancellation</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">✓</span>
+            <span>Instant confirmation</span>
+          </div>
+        </div>
+
+        <div class="modal-buttons">
+          <button class="modal-btn cancel-btn" id="modal-cancel">
+            Edit Details
+          </button>
+          <button class="modal-btn confirm-btn" id="modal-confirm">
+            Confirm Booking
+          </button>
         </div>
       </div>
     </div>
 
     <!-- Скрипт страницы -->
     <script src="{{ url_for('static', filename='js/schedule.js') }}?v=4"></script>
+    <script src="{{ url_for('static', filename='js/about.js') }}"></script>
+    <!-- <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("DOM loaded - checking mobile menu elements...");
+
+        const burgerMenu = document.getElementById("burger-menu");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+        console.log("Burger menu element:", burgerMenu);
+        console.log("Mobile menu element:", mobileMenu);
+        console.log("Close button element:", mobileMenuClose);
+
+        // Проверяем, найдены ли элементы
+        if (!burgerMenu) {
+          console.error("❌ Burger menu element not found!");
+          return;
+        }
+        if (!mobileMenu) {
+          console.error("❌ Mobile menu element not found!");
+          return;
+        }
+        if (!mobileMenuClose) {
+          console.error("❌ Close button element not found!");
+          return;
+        }
+
+        console.log("✅ All elements found successfully");
+
+        function toggleMobileMenu() {
+          console.log("🔄 Toggling mobile menu...");
+          burgerMenu.classList.toggle("active");
+          mobileMenu.classList.toggle("active");
+
+          if (mobileMenu.classList.contains("active")) {
+            document.body.style.overflow = "hidden";
+            console.log("📱 Mobile menu opened");
+          } else {
+            document.body.style.overflow = "";
+            console.log("📱 Mobile menu closed");
+          }
+        }
+
+        function closeMobileMenu() {
+          console.log("❌ Closing mobile menu");
+          burgerMenu.classList.remove("active");
+          mobileMenu.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        // Добавляем обработчики событий
+        burgerMenu.addEventListener("click", function (e) {
+          e.stopPropagation();
+          console.log("🍔 Burger menu clicked");
+          toggleMobileMenu();
+        });
+
+        mobileMenuClose.addEventListener("click", function (e) {
+          e.stopPropagation();
+          console.log("❌ Close button clicked");
+          closeMobileMenu();
+        });
+
+        // Закрытие меню при клике на ссылки
+        document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+          link.addEventListener("click", function (e) {
+            console.log("🔗 Mobile link clicked:", this.textContent);
+            closeMobileMenu();
+          });
+        });
+
+        // Закрытие меню при клике вне контейнера
+        mobileMenu.addEventListener("click", function (e) {
+          if (e.target === mobileMenu) {
+            console.log("📱 Click outside menu container");
+            closeMobileMenu();
+          }
+        });
+
+        // Закрытие меню при нажатии Escape
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+            console.log("⌨️ Escape key pressed");
+            closeMobileMenu();
+          }
+        });
+
+        console.log("✅ Mobile menu event listeners added successfully");
+      });
+    </script> -->
   </body>
 </html>

@@ -69,9 +69,6 @@ def about_page():
 def blog_page():
     return render_template('blog.html')
 
-@app.route('/blog/how-to-prepare-jais-zipline')
-def blog_article_1():
-    return render_template('blog-article-1.html')
 
 @app.route('/blog/top-7-uae-mountain-adventures')
 def blog_article_2():

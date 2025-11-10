@@ -332,21 +332,33 @@
   <body>
     <nav class="navbar">
       <div class="nav-container">
+        <img
+          src="{{ url_for('static', filename='images/logo.webp') }}"
+          alt="Jebel Jais"
+          class="nav-logo"
+        />
+
+        <!-- Бургер-меню -->
         <div class="burger-menu" id="burger-menu">
           <span></span>
           <span></span>
           <span></span>
         </div>
+
+        <!-- Основное меню для десктопа -->
         <div class="nav-links" id="nav-links">
-          <a
-            href="/ras-al-khaima/event-tickets/jebel-jais/buy-tickets"
-            class="mobile-nav-link"
-            >HOME</a
-          >
-          <a href="/about" class="mobile-nav-link">ABOUT US</a>
-          <a href="/privacy-policy" class="mobile-nav-link">PRIVACY</a>
-          <a href="/terms-conditions" class="mobile-nav-link">TERMS</a>
+          <a href="/ras-al-khaima/event-tickets/jebel-jais/buy-tickets">HOME</a>
+          <a href="/about">ABOUT US</a>
+          <a href="/privacy-policy">POLICY</a>
+          <a href="/terms-conditions">TERMS </a>
         </div>
+
+        <button
+          class="book-now-btn nav-btn"
+          onclick="window.location.href='/ras-al-khaima/event-tickets/jebel-jais/buy-tickets'"
+        >
+          BOOK NOW
+        </button>
       </div>
     </nav>
 
@@ -623,9 +635,9 @@
             <a href="/ras-al-khaima/event-tickets/jebel-jais/buy-tickets"
               >HOME</a
             >
-            <a href="#">ABOUT US</a>
-            <a href="#">PLAY</a>
-            <a href="#">STAY</a>
+            <a href="/about">ABOUT US</a>
+            <a href="/privacy-policy">PRIVACY</a>
+            <a href="/terms-conditions">TERMS</a>
           </div>
           <h5>CONTACT DETAILS</h5>
           <div class="links-column">
@@ -658,7 +670,7 @@
         </div>
       </div>
     </footer>
-
+    <script src="{{ url_for('static', filename='js/about.js') }}"></script>
     <script>
       // Interactive elements functionality
       function toggleInfo(id) {
@@ -703,31 +715,46 @@
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: "smooth" });
         });
+        document.addEventListener("DOMContentLoaded", function () {
+          const burgerMenu = document.getElementById("burger-menu");
+          const mobileMenu = document.getElementById("mobile-menu");
+          const mobileMenuClose = document.getElementById("mobile-menu-close");
 
-        // Mobile menu functionality (reuse from main script)
-        const burgerMenu = document.getElementById("burger-menu");
-        const mobileMenu = document.getElementById("mobile-menu");
-        const mobileMenuClose = document.getElementById("mobile-menu-close");
+          function toggleMobileMenu() {
+            burgerMenu.classList.toggle("active");
+            mobileMenu.classList.toggle("active");
+            document.body.style.overflow = mobileMenu.classList.contains(
+              "active"
+            )
+              ? "hidden"
+              : "";
+          }
 
-        function toggleMobileMenu() {
-          burgerMenu.classList.toggle("active");
-          mobileMenu.classList.toggle("active");
-          document.body.style.overflow = mobileMenu.classList.contains("active")
-            ? "hidden"
-            : "";
-        }
+          function closeMobileMenu() {
+            burgerMenu.classList.remove("active");
+            mobileMenu.classList.remove("active");
+            document.body.style.overflow = "";
+          }
 
-        function closeMobileMenu() {
-          burgerMenu.classList.remove("active");
-          mobileMenu.classList.remove("active");
-          document.body.style.overflow = "";
-        }
+          if (burgerMenu) {
+            burgerMenu.addEventListener("click", toggleMobileMenu);
+          }
 
-        burgerMenu.addEventListener("click", toggleMobileMenu);
-        mobileMenuClose.addEventListener("click", closeMobileMenu);
+          if (mobileMenuClose) {
+            mobileMenuClose.addEventListener("click", closeMobileMenu);
+          }
 
-        document.querySelectorAll(".mobile-nav-link").forEach((link) => {
-          link.addEventListener("click", closeMobileMenu);
+          // Закрытие меню при клике на ссылки
+          document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+            link.addEventListener("click", closeMobileMenu);
+          });
+
+          // Закрытие меню при клике вне контейнера
+          mobileMenu.addEventListener("click", function (e) {
+            if (e.target === mobileMenu) {
+              closeMobileMenu();
+            }
+          });
         });
       });
     </script>

@@ -1,108 +1,392 @@
 .blog-hero {
-    height: 45vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url("../images/hero-bg.jpg") center/cover no-repeat;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    padding: 0 1.5rem;
-    animation: fadeIn 1s ease;
+  height: 45vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../images/hero-bg.jpg") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 0 1.5rem;
+  animation: fadeIn 1s ease;
 }
 
 .blog-hero h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 0.6rem;
-    letter-spacing: 2px;
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  letter-spacing: 2px;
 }
 
 .blog-hero p {
-    font-size: 1rem;
-    max-width: 600px;
-    opacity: 0.9;
+  font-size: 1rem;
+  max-width: 600px;
+  opacity: 0.9;
 }
 
 .blog-section {
-    padding: 80px 2rem;
-    background: #f8f9fa;
+  padding: 80px 2rem;
+  background: #f8f9fa;
 }
 
 .blog-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-    gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 2rem;
 }
 
 .blog-card {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
 }
 
 .blog-card.visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .blog-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .blog-info {
-    padding: 1.5rem;
+  padding: 1.5rem;
 }
 
 .blog-info h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 0.7rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.7rem;
 }
 
 .blog-info p {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 1rem;
-    line-height: 1.6;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
 .blog-meta {
-    font-size: 0.8rem;
-    color: #777;
-    margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: #777;
+  margin-bottom: 1rem;
 }
 
 .read-more {
-    color: #ff6b35;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.3s;
+  color: #ff6b35;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
 .read-more:hover {
-    color: #e55a2b;
-    padding-left: 5px;
+  color: #e55a2b;
+  padding-left: 5px;
 }
 
 .blog-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 480px) {
-    .blog-hero h1 {
-        font-size: 2.3rem;
-    }
+  .blog-hero h1 {
+    font-size: 2.3rem;
+  }
+}
+/* Бургер-меню */
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+.burger-menu span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Активное состояние бургер-меню */
+.burger-menu.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.burger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-menu.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Полноэкранное мобильное меню */
+.mobile-menu-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a2139 0%, #13294b 100%);
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-fullscreen.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-container {
+  text-align: center;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Заголовок меню */
+.mobile-menu-header {
+  margin-bottom: 3rem;
+}
+
+.mobile-menu-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.mobile-menu-subtitle {
+  font-size: 1.2rem;
+  color: #ff6b35;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Навигационные ссылки */
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.mobile-nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.8rem 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.mobile-nav-link:hover {
+  color: #ff6b35;
+  transform: translateX(10px);
+}
+
+.mobile-nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #ff6b35;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.mobile-nav-link:hover::after {
+  width: 100px;
+}
+
+/* Кнопка BOOK NOW в мобильном меню */
+.mobile-book-now-btn {
+  background: #ff6b35;
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  width: 100%;
+  max-width: 250px;
+}
+
+.mobile-book-now-btn:hover {
+  background: #e55a2b;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+}
+
+/* Адаптив для планшетов и мобильных */
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none;
+  }
+
+  .burger-menu {
+    display: flex;
+  }
+
+  .nav-btn {
+    display: none;
+  }
+
+  .nav-container {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+  .mobile-menu-title {
+    font-size: 2rem;
+  }
+
+  .mobile-menu-subtitle {
+    font-size: 1rem;
+  }
+
+  .mobile-nav-link {
+    font-size: 1.1rem;
+  }
+
+  .mobile-menu-container {
+    padding: 1.5rem;
+  }
+}
+
+/* Анимация появления элементов меню */
+.mobile-menu-fullscreen.active .mobile-menu-header {
+  animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.mobile-menu-fullscreen.active .mobile-nav-links {
+  animation: fadeInUp 0.6s ease 0.4s both;
+}
+
+.mobile-menu-fullscreen.active .mobile-book-now-btn {
+  animation: fadeInUp 0.6s ease 0.6s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Остальные существующие медиа-запросы */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    height: 60.36px;
+    width: 100px;
+  }
+
+  .navbar.scrolled .nav-logo {
+    height: 40px;
+    width: 80px;
+  }
+}
+
+/* Кнопка закрытия мобильного меню */
+.mobile-menu-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1003;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-menu-close span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-close span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.mobile-menu-close span:nth-child(2) {
+  transform: rotate(-45deg);
+}
+
+.mobile-menu-close:hover span {
+  background-color: #ff6b35;
+}
+
+.mobile-menu-close:hover {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+/* Адаптив для маленьких экранов */
+@media (max-width: 480px) {
+  .mobile-menu-close {
+    top: 20px;
+    right: 20px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .mobile-menu-close span {
+    width: 20px;
+  }
 }

@@ -77,20 +77,11 @@
     >
   </head>
   <body>
+
     <!-- Reading progress bar -->
     <div id="reading-progress"></div>
 
     <!-- Navbar -->
-    <div class="navbar">
-      <div class="nav-container">
-        <div class="nav-links">
-          <a href="/ras-al-khaima/event-tickets/jebel-jais/buy-tickets">Home</a>
-          <a href="/#activities">Experiences</a>
-          <a href="/blog" class="active">Blog</a>
-          <a href="/privacy-policy">Privacy</a>
-        </div>
-      </div>
-    </div>
 
     <!-- Back to blog -->
     <a class="back-to-blog" href="/blog">← Back to blog</a>
@@ -370,5 +361,6 @@
     </main>
 
     <script src="/static/js/article.js"></script>
+    <script src="{{ url_for('static', filename='js/about.js') }}"></script>
   </body>
 </html>

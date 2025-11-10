@@ -7,37 +7,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const detailsContainer = document.createElement("div");
   detailsContainer.className = "activity-details";
-  if (mapEl && mapEl.parentElement) {
-    mapEl.parentElement.after(detailsContainer);
-  }
+  if (mapEl && mapEl.parentElement) mapEl.parentElement.after(detailsContainer);
 
   const activityData = {
     "JAIS FLIGHT": {
       desc: "Soar over the Hajar Mountains on the world's longest zipline — pure adrenaline and panoramic beauty.",
-      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.635204902045!2d56.12766407541459!3d25.95366627724008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f10!3m3!1m2!1s0x3ef6733b3d1a9473%3A0x1a171bc49cb9d13!2sJebel%20Jais%20Flight%20-%20World%E2%80%99s%20Longest%20Zipline!5e0!3m2!1sen!2sae!4v1706207453921!5m2!1sen!2sae&z=0",
-      details: {
-        duration: "2 hours total",
-        bring: "Comfortable clothes",
-        difficulty: "Moderate",
-      },
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193016.07876296408!2d56.07819277650473!3d25.98438545118623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef6633e40f1aff7%3A0x4ad5c210abe1de21!2sJebel%20Jais!5e0!3m2!1sru!2s!4v1762782544875!5m2!1sru!2s",
     },
     "JAIS SKY TOUR": {
       desc: "Glide through 5 km of mountain ziplines and sky bridges — adventure with scenic views at 1,600m altitude.",
-      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.612038941148!2d56.12619727541465!3d25.95451397723958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f10!3m3!1m2!1s0x3ef6733b9a7b1cdb%3A0x6df65d2dc99b7c1!2sJais%20Sky%20Tour!5e0!3m2!1sen!2sae!4v1706207512342!5m2!1sen!2sae",
-      details: {
-        duration: "1.5 hours",
-        bring: "Sport shoes, sunglasses",
-        difficulty: "Easy to Moderate",
-      },
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193016.07876296408!2d56.07819277650473!3d25.98438545118623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef6633e40f1aff7%3A0x4ad5c210abe1de21!2sJebel%20Jais!5e0!3m2!1sru!2s!4v1762782544875!5m2!1sru!2s",
     },
     "BEAR GRYLLS EXPLORERS CAMP": {
       desc: "Learn survival skills in the rugged wilderness of Ras Al Khaimah, inspired by Bear Grylls himself.",
-      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.4536152417135!2d56.15314947541481!3d25.960320577239027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f10!3m3!1m2!1s0x3ef67332c909f7a1%3A0xc0f01664e705fd2a!2sBear%20Grylls%20Explorers%20Camp!5e0!3m2!1sen!2sae!4v1706207601905!5m2!1sen!2sae",
-      details: {
-        duration: "Half-day or full-day",
-        bring: "Outdoor wear, water bottle, hat",
-        difficulty: "Challenging",
-      },
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193016.07876296408!2d56.07819277650473!3d25.98438545118623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef6633e40f1aff7%3A0x4ad5c210abe1de21!2sJebel%20Jais!5e0!3m2!1sru!2s!4v1762782544875!5m2!1sru!2s",
     },
   };
 
@@ -47,27 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
       activityData[activity.toUpperCase()] || activityData["JAIS FLIGHT"];
     descEl.textContent = data.desc;
     mapEl.src = data.map;
-
-    // Блок деталей
-    detailsContainer.innerHTML = `
-      <div class="details-grid">
-        <div class="detail-item">
-          <span class="icon">⏱</span>
-          <span><strong>Duration:</strong> ${data.details.duration}</span>
-        </div>
-        <div class="detail-item">
-          <span class="icon">🎒</span>
-          <span><strong>Bring:</strong> ${data.details.bring}</span>
-        </div>
-        <div class="detail-item">
-          <span class="icon">⚡</span>
-          <span><strong>Difficulty:</strong> ${data.details.difficulty}</span>
-        </div>
-      </div>
-    `;
   }
 
-  /* ---------- DATE & TIME PICKER LOGIC ---------- */
+  /* ---------- DATE PICKER ---------- */
   const dpTrigger = document.getElementById("dp-trigger");
   const dpTriggerText = document.getElementById("dp-trigger-text");
   const dpModal = document.getElementById("dp-modal");
@@ -78,14 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const dpMonthLabel = document.getElementById("dp-month-label");
   const dpGrid = document.getElementById("dp-grid");
 
-  const tpTrigger = document.getElementById("tp-trigger");
-  const tpTriggerText = document.getElementById("tp-trigger-text");
-  const tpModal = document.getElementById("tp-modal");
-  const tpClose = document.getElementById("tp-close");
-  const tpCancel = document.getElementById("tp-cancel");
-  const tpGrid = document.getElementById("tp-grid");
-
-  const timeBlock = document.getElementById("time-block");
   const confirmBtn = document.getElementById("confirm");
   const errorBox = document.getElementById("form-error");
 
@@ -94,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const minMonth = new Date(today.getFullYear(), today.getMonth(), 1);
   let viewDate = new Date(today.getFullYear(), today.getMonth(), 1);
   let selectedDate = null;
-  let selectedTime = null;
 
   const setStartOfDay = (d) => d.setHours(0, 0, 0, 0);
   const formatButtonDate = (date) =>
@@ -103,15 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
       month: "short",
       day: "numeric",
     });
-  const formatTime = (h, m) =>
-    `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
   const showError = (msg) => {
     errorBox.textContent = msg;
     errorBox.style.display = "block";
   };
   const hideError = () => (errorBox.style.display = "none");
 
-  /* ---------- DATE PICKER ---------- */
   function updateArrows() {
     const isAtMin =
       viewDate.getFullYear() === minMonth.getFullYear() &&
@@ -125,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
       month: "long",
       year: "numeric",
     });
-
     updateArrows();
 
     const year = viewDate.getFullYear();
@@ -141,10 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const cell = document.createElement("div");
       cell.className = "dp-cell";
       cell.textContent = day;
-
       const cellDate = new Date(year, month, day);
       setStartOfDay(cellDate);
-
       if (cellDate < today) {
         cell.classList.add("disabled");
       } else {
@@ -156,25 +106,18 @@ document.addEventListener("DOMContentLoaded", () => {
           selectedDate = cellDate;
           dpTriggerText.textContent = formatButtonDate(cellDate);
           dpModal.style.display = "none";
-          timeBlock.classList.remove("hidden");
-          setTimeout(() => timeBlock.classList.add("visible"), 20);
         });
       }
       dpGrid.appendChild(cell);
     }
   }
 
-  function openDp() {
+  dpTrigger.addEventListener("click", () => {
     dpModal.style.display = "flex";
     renderCalendar();
-  }
-  function closeDp() {
-    dpModal.style.display = "none";
-  }
-
-  dpTrigger.addEventListener("click", openDp);
-  dpClose.addEventListener("click", closeDp);
-  if (dpCancel) dpCancel.addEventListener("click", closeDp);
+  });
+  dpClose.addEventListener("click", () => (dpModal.style.display = "none"));
+  dpCancel.addEventListener("click", () => (dpModal.style.display = "none"));
   dpPrev.addEventListener("click", () => {
     const prev = new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1);
     if (prev >= minMonth) viewDate = prev;
@@ -185,80 +128,134 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCalendar();
   });
 
-  /* ---------- TIME PICKER ---------- */
-  function renderTimeSlots() {
-    tpGrid.innerHTML = "";
-    const startHour = 5;
-    const endHour = 22;
-    const step = 30;
-    const now = new Date();
+  /* ---------- CONFIRMATION MODAL ---------- */
+  const confirmationModal = document.getElementById("confirmation-modal");
+  const modalCancel = document.getElementById("modal-cancel");
+  const modalConfirm = document.getElementById("modal-confirm");
 
-    for (let hour = startHour; hour <= endHour; hour++) {
-      for (let minute of [0, 30]) {
-        if (hour === endHour && minute === 30) break;
-        const cell = document.createElement("div");
-        cell.className = "dp-cell";
-        const timeStr = formatTime(hour, minute);
-        cell.textContent = timeStr;
+  const confirmOfferName = document.getElementById("confirm-offer-name");
+  const confirmOfferPrice = document.getElementById("confirm-offer-price");
+  const confirmCustomerName = document.getElementById("confirm-customer-name");
+  const confirmCustomerPhone = document.getElementById(
+    "confirm-customer-phone"
+  );
+  const confirmDate = document.getElementById("confirm-date");
+  const confirmTickets = document.getElementById("confirm-tickets");
 
-        if (selectedDate) {
-          const slot = new Date(selectedDate);
-          slot.setHours(hour, minute, 0, 0);
-          if (
-            selectedDate.toDateString() === new Date().toDateString() &&
-            slot <= now
-          ) {
-            cell.classList.add("disabled");
-          }
-        }
+  function showConfirmationModal() {
+    const activityName = localStorage.getItem("activityName") || "JAIS FLIGHT";
+    const price = localStorage.getItem("totalPrice") || "0";
+    const name = localStorage.getItem("fullName") || "-";
+    const phone = localStorage.getItem("phone") || "-";
+    const date = selectedDate ? formatButtonDate(selectedDate) : "Not selected";
+    const adults = localStorage.getItem("adultCount") || 1;
+    const kids = localStorage.getItem("childCount") || 0;
 
-        cell.addEventListener("click", () => {
-          if (cell.classList.contains("disabled")) return;
-          document
-            .querySelectorAll("#tp-grid .dp-cell.selected")
-            .forEach((c) => c.classList.remove("selected"));
-          cell.classList.add("selected");
-          selectedTime = timeStr;
-          tpTriggerText.textContent = timeStr;
-          tpModal.style.display = "none";
-        });
+    confirmTickets.textContent = `${adults} Adult${
+      adults > 1 ? "s" : ""
+    }, ${kids} Child${kids > 1 ? "ren" : ""}`;
+    confirmOfferName.textContent = activityName;
+    confirmOfferPrice.textContent = `${price} AED`;
+    confirmCustomerName.textContent = name;
+    confirmCustomerPhone.textContent = phone;
+    confirmDate.textContent = date;
 
-        tpGrid.appendChild(cell);
-      }
-    }
+    confirmationModal.classList.add("active");
+    document.body.style.overflow = "hidden";
   }
 
-  function openTp() {
-    if (!selectedDate) {
-      showError("Please select a date first.");
-      return;
-    }
-    hideError();
-    tpModal.style.display = "flex";
-    renderTimeSlots();
-  }
-  function closeTp() {
-    tpModal.style.display = "none";
-  }
+  modalCancel.addEventListener("click", () => {
+    confirmationModal.classList.remove("active");
+    document.body.style.overflow = "";
+  });
 
-  tpTrigger.addEventListener("click", openTp);
-  tpClose.addEventListener("click", closeTp);
-  if (tpCancel) tpCancel.addEventListener("click", closeTp);
-
-  /* ---------- CONFIRM ---------- */
-  confirmBtn.addEventListener("click", () => {
-    hideError();
-    if (!selectedDate) {
-      showError("Please select a date.");
-      return;
-    }
-    if (!selectedTime) {
-      showError("Please select a time slot.");
-      return;
-    }
-
+  modalConfirm.addEventListener("click", () => {
+    confirmationModal.classList.remove("active");
+    document.body.style.overflow = "";
     localStorage.setItem("selectedDate", selectedDate.toISOString());
-    localStorage.setItem("selectedTime", selectedTime);
     window.location.href = "/card";
   });
+
+  confirmationModal.addEventListener("click", (e) => {
+    if (e.target === confirmationModal) {
+      confirmationModal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && confirmationModal.classList.contains("active")) {
+      confirmationModal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
+
+  /* ---------- GO TO PAYMENT ---------- */
+  confirmBtn.addEventListener("click", () => {
+    hideError();
+    if (!selectedDate) return showError("Please select a date.");
+    showConfirmationModal();
+  });
+
+  /* ---------- TICKET SELECTION ---------- */
+  const adultMinus = document.getElementById("adult-minus");
+  const adultPlus = document.getElementById("adult-plus");
+  const childMinus = document.getElementById("child-minus");
+  const childPlus = document.getElementById("child-plus");
+  const adultCountEl = document.getElementById("adult-count");
+  const childCountEl = document.getElementById("child-count");
+  const adultUnitEl = document.getElementById("adult-unit");
+  const childUnitEl = document.getElementById("child-unit");
+  const totalPriceEl = document.getElementById("total-price");
+
+  let adultCount = 1;
+  let childCount = 0;
+  const basePrice = parseFloat(localStorage.getItem("price")) || 0;
+  const childPrice = Math.round(basePrice * 0.8);
+
+  adultUnitEl.textContent = `${basePrice.toFixed(2)} AED`;
+  childUnitEl.textContent = `${childPrice.toFixed(2)} AED`;
+
+  function updateTotals() {
+    const total = adultCount * basePrice + childCount * childPrice;
+    totalPriceEl.textContent = `${total.toFixed(2)} AED`;
+
+    localStorage.setItem("adultCount", adultCount);
+    localStorage.setItem("childCount", childCount);
+    localStorage.setItem("totalPrice", total.toFixed(2));
+  }
+
+  adultMinus.addEventListener("click", () => {
+    if (adultCount > 0) {
+      adultCount--;
+      adultCountEl.textContent = adultCount;
+      updateTotals();
+    }
+  });
+
+  adultPlus.addEventListener("click", () => {
+    if (adultCount < 10) {
+      adultCount++;
+      adultCountEl.textContent = adultCount;
+      updateTotals();
+    }
+  });
+
+  childMinus.addEventListener("click", () => {
+    if (childCount > 0) {
+      childCount--;
+      childCountEl.textContent = childCount;
+      updateTotals();
+    }
+  });
+
+  childPlus.addEventListener("click", () => {
+    if (childCount < 10) {
+      childCount++;
+      childCountEl.textContent = childCount;
+      updateTotals();
+    }
+  });
+
+  updateTotals();
 });

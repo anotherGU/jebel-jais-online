@@ -78,16 +78,37 @@
   </head>
   <body>
     <!-- Navbar -->
-    <div class="navbar">
+    <nav class="navbar">
       <div class="nav-container">
-        <div class="nav-links">
-          <a href="/ras-al-khaima/event-tickets/jebel-jais/buy-tickets">Home</a>
-          <a href="/#activities">Experiences</a>
-          <a href="/blog" class="active">Blog</a>
-          <a href="/privacy-policy">Privacy</a>
+        <img
+          src="{{ url_for('static', filename='images/logo.webp') }}"
+          alt="Jebel Jais"
+          class="nav-logo"
+        />
+
+        <!-- Бургер-меню -->
+        <div class="burger-menu" id="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+
+        <!-- Основное меню для десктопа -->
+        <div class="nav-links" id="nav-links">
+          <a href="#">HOME</a>
+          <a href="/about">ABOUT US</a>
+          <a href="/privacy-policy">POLICY</a>
+          <a href="/terms-conditions">TERMS </a>
+        </div>
+
+        <button
+          class="book-now-btn nav-btn"
+          onclick="window.location.href='/ras-al-khaima/event-tickets/jebel-jais/buy-tickets'"
+        >
+          BOOK NOW
+        </button>
       </div>
-    </div>
+    </nav>
 
     <!-- Back to blog -->
     <a class="a6-back" href="/blog">← Back to blog</a>
@@ -377,12 +398,16 @@
       <section class="a6-final reveal">
         <h3>Still deciding?</h3>
         <p>Check today’s availability and see real prices with no signup.</p>
-        <button class="a6-cta" onclick="window.location='/'">
+        <button
+          class="a6-cta"
+          onclick="window.location.href='/ras-al-khaima/event-tickets/jebel-jais/buy-tickets'"
+        >
           Compare live availability
         </button>
       </section>
     </main>
 
     <script src="/static/js/article6.js"></script>
+    <script src="{{ url_for('static', filename='js/about.js') }}"></script>
   </body>
 </html>

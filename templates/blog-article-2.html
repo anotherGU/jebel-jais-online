@@ -75,6 +75,37 @@
     >
   </head>
   <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <img
+          src="{{ url_for('static', filename='images/logo.webp') }}"
+          alt="Jebel Jais"
+          class="nav-logo"
+        />
+
+        <!-- Бургер-меню -->
+        <div class="burger-menu" id="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- Основное меню для десктопа -->
+        <div class="nav-links" id="nav-links">
+          <a href="#">HOME</a>
+          <a href="/about">ABOUT US</a>
+          <a href="/privacy-policy">POLICY</a>
+          <a href="/terms-conditions">TERMS </a>
+        </div>
+
+        <button
+          class="book-now-btn nav-btn"
+          onclick="window.location.href='/ras-al-khaima/event-tickets/jebel-jais/buy-tickets'"
+        >
+          BOOK NOW
+        </button>
+      </div>
+    </nav>
     <!-- Back to blog -->
     <a class="back-to-blog a2-back" href="/blog">← Back to blog</a>
 
@@ -315,12 +346,16 @@
       <div class="a2-container">
         <h3>Want to try one of these today?</h3>
         <p>Check live availability and book your spot in a few clicks.</p>
-        <button class="a2-cta" onclick="window.location='/'">
+        <button
+          class="a2-cta"
+          onclick="window.location.href='/ras-al-khaima/event-tickets/jebel-jais/buy-tickets'"
+        >
           Check availability
         </button>
       </div>
     </section>
 
     <script src="/static/js/article2.js"></script>
+    <script src="{{ url_for('static', filename='js/about.js') }}"></script>
   </body>
 </html>

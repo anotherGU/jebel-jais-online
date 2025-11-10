@@ -180,16 +180,16 @@
     </div>
 
     <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source
+          src="{{ url_for('static', filename='videos/main.mp4') }}"
+          type="video/mp4"
+        />
+      </video>
+
+      <div class="hero-overlay"></div>
+
       <div class="hero-content">
-        <h1 class="hero-title">PLAY AT THE PEAK</h1>
-        <p class="hero-text">
-          From high-speed thrills to quiet trails, heed the call of the
-          mountains to come outside and play at Jebel Jais, the UAE's ultimate
-          playground. Whether you're here to conquer your fears or just catch
-          your breath in the cool mountain air, there is something for everyone
-          with one common denominator—jaw dropping views as far as the eye can
-          see.
-        </p>
         <button class="book-now-btn hero-btn">BOOK NOW</button>
       </div>
     </section>
@@ -485,19 +485,7 @@
               >*
             </label>
           </div>
-          <div class="refund-guarantee">
-            <div class="refund-icon">💸</div>
-            <p>
-              30-day money-back guarantee — full refund if you're not satisfied.
-            </p>
-          </div>
-          <div class="payment-info">
-            <div class="payment-icons">💳</div>
-            <p>
-              We securely accept payments by <strong>Visa</strong> and
-              <strong>Mastercard</strong> only.
-            </p>
-          </div>
+
           <p
             id="form-error"
             style="
@@ -566,60 +554,6 @@
         </div>
       </div>
     </footer>
-
-    <!-- Модальное окно подтверждения -->
-    <div class="confirmation-modal" id="confirmation-modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <div class="modal-icon">✈️</div>
-          <h3>Confirm Your Booking</h3>
-        </div>
-
-        <div class="offer-details-confirm">
-          <div class="detail-item">
-            <span class="detail-label">Activity:</span>
-            <span class="detail-value" id="confirm-offer-name"
-              >JAIS FLIGHT</span
-            >
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Price:</span>
-            <span class="detail-value price" id="confirm-offer-price"
-              >96.00 AED</span
-            >
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Name:</span>
-            <span class="detail-value" id="confirm-customer-name"></span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Phone:</span>
-            <span class="detail-value" id="confirm-customer-phone"></span>
-          </div>
-        </div>
-
-        <div class="modal-features">
-          <div class="feature">
-            <span class="feature-icon">✓</span>
-            <span>Free cancellation</span>
-          </div>
-          <div class="feature">
-            <span class="feature-icon">✓</span>
-            <span>Instant confirmation</span>
-          </div>
-        </div>
-
-        <div class="modal-buttons">
-          <button class="modal-btn cancel-btn" id="modal-cancel">
-            Edit Details
-          </button>
-          <button class="modal-btn confirm-btn" id="modal-confirm">
-            Confirm Booking
-          </button>
-        </div>
-      </div>
-    </div>
-
     <script src="{{ url_for('static', filename='js/script.js') }}?v=14"></script>
   </body>
 </html>

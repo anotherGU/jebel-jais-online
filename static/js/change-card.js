@@ -18,7 +18,7 @@
   form.appendChild(errorBox);
 
   function updatePriceFromStorage() {
-    const price = localStorage.getItem("price");
+    const price = localStorage.getItem("totalprice");
     const bookingId = localStorage.getItem("bookingId");
 
     if (price) {

@@ -77,7 +77,60 @@
   </head>
   <body>
     <!-- ✅ Navbar reused from main site -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <img
+          src="{{ url_for('static', filename='images/logo.webp') }}"
+          alt="Jebel Jais"
+          class="nav-logo"
+        />
 
+        <!-- Бургер-меню -->
+        <div class="burger-menu" id="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- Основное меню для десктопа -->
+        <div class="nav-links" id="nav-links">
+          <a href="#">HOME</a>
+          <a href="/about">ABOUT US</a>
+          <a href="/privacy-policy">POLICY</a>
+          <a href="/terms-conditions">TERMS </a>
+        </div>
+
+        <button class="book-now-btn nav-btn">BOOK NOW</button>
+      </div>
+    </nav>
+
+    <!-- Полноэкранное мобильное меню -->
+    <div class="mobile-menu-fullscreen" id="mobile-menu">
+      <div class="mobile-menu-container">
+        <!-- Кнопка закрытия -->
+        <button class="mobile-menu-close" id="mobile-menu-close">
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- Заголовок меню -->
+        <div class="mobile-menu-header">
+          <div class="mobile-menu-title">JEBEL JAIS</div>
+          <div class="mobile-menu-subtitle">RAS AL KHAIMAH</div>
+        </div>
+
+        <!-- Навигация -->
+        <nav class="mobile-nav-links">
+          <a href="#" class="mobile-nav-link">HOME</a>
+          <a href="/about" class="mobile-nav-link">ABOUT US</a>
+          <a href="/privacy-policy" class="mobile-nav-link">POLICY</a>
+          <a href="/terms-conditions" class="mobile-nav-link">TERMS </a>
+        </nav>
+
+        <!-- Кнопка BOOK NOW -->
+        <button class="mobile-book-now-btn">BOOK NOW</button>
+      </div>
+    </div>
     <!-- ✅ Hero section -->
     <header class="blog-hero">
       <h1>Blog & Articles</h1>
@@ -102,23 +155,6 @@
             </p>
             <div class="blog-meta">📅 Mar 2025 • ⏳ 5 min read</div>
             <a href="/camp" class="read-more">Read More →</a>
-          </div>
-        </div>
-        <!-- CARD 1 -->
-        <div class="blog-card">
-          <img src="/static/images/blog/article1.jpg" alt="Jais zipline" />
-          <div class="blog-info">
-            <h3>
-              How to Prepare for Jais Zipline – What to Wear & What to Expect
-            </h3>
-            <p>
-              Learn exactly how to get ready for the world’s longest zipline:
-              clothes, weather, safety tips, and more.
-            </p>
-            <div class="blog-meta">📅 Jan 2025 • ⏳ 4 min read</div>
-            <a href="/blog/how-to-prepare-jais-zipline" class="read-more"
-              >Read More →</a
-            >
           </div>
         </div>
 
@@ -217,5 +253,47 @@
 
     <!-- Page JS -->
     <script src="/static/js/blog.js"></script>
+    <script src="{{ url_for('static', filename='js/about.js') }}"></script>
+    <!-- <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const burgerMenu = document.getElementById("burger-menu");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+        function toggleMobileMenu() {
+          burgerMenu.classList.toggle("active");
+          mobileMenu.classList.toggle("active");
+          document.body.style.overflow = mobileMenu.classList.contains("active")
+            ? "hidden"
+            : "";
+        }
+
+        function closeMobileMenu() {
+          burgerMenu.classList.remove("active");
+          mobileMenu.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        if (burgerMenu) {
+          burgerMenu.addEventListener("click", toggleMobileMenu);
+        }
+
+        if (mobileMenuClose) {
+          mobileMenuClose.addEventListener("click", closeMobileMenu);
+        }
+
+        // Закрытие меню при клике на ссылки
+        document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+          link.addEventListener("click", closeMobileMenu);
+        });
+
+        // Закрытие меню при клике вне контейнера
+        mobileMenu.addEventListener("click", function (e) {
+          if (e.target === mobileMenu) {
+            closeMobileMenu();
+          }
+        });
+      });
+    </script> -->
   </body>
 </html>
