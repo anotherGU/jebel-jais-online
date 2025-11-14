@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.config['css_version'] = '8'
 
 @app.route('/ras-al-khaima/event-tickets/jebel-jais/buy-tickets')
-def index():
+def main():
     return render_template('main.html')
 
 @app.route('/date-time')
