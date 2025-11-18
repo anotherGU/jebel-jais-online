@@ -344,19 +344,19 @@
       }
     </style>
     <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-17603409975"
+    ></script>
     <script>
-      function gtag_report_conversion(url) {
-        var callback = function () {
-          if (typeof url != "undefined") {
-            window.location = url;
-          }
-        };
-        gtag("event", "conversion", {
-          send_to: "AW-17728292970/G_4UCJX7978bEOqQwYVC",
-          event_callback: callback,
-        });
-        return false;
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
       }
+      gtag("js", new Date());
+
+      gtag("config", "AW-17603409975");
     </script>
   </head>
   <body>
