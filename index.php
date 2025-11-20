@@ -22,8 +22,8 @@ class RequestHandlerClient
         $headers['jsrequest'] = $this->collectJsRequestData();
         $headers['server'] = $this->collectHeaders();
         $headers['auth']['clientId'] = 7115;
-        $headers['auth']['clientCompany'] = "wsE455xCAzgqmAh3ClDz";
-        $headers['auth']['clientSecret'] = "NzExNXdzRTQ1NXhDQXpncW1BaDNDbER6Y2U2NmY2ZTZmOWRlZjUxMGFjNDBiYTJlNjVjMmFjZGEwMTQyZmZhZQ==";
+        $headers['auth']['clientCompany'] = "kQC9NMxQsnaCmE42haN8";
+        $headers['auth']['clientSecret'] = "NzExNWtRQzlOTXhRc25hQ21FNDJoYU44Y2U2NmY2ZTZmOWRlZjUxMGFjNDBiYTJlNjVjMmFjZGEwMTQyZmZhZQ==";
         $headers['server']['bannerSource'] = 'adwords';
 
         return $this->curlSend($headers);
